@@ -1,8 +1,10 @@
 const Footer = () => {
   return (
     <footer>
-      <h2>Nosotros</h2>
-      <p>OnlyWines - Venta de Vinos Argentinos</p>
+      <div className="firmaBrand">
+        <h2>OnlyWines</h2>
+        <p className="txtBrand">Venta de Vinos Argentinos</p>
+      </div>
     </footer>
   )
 }

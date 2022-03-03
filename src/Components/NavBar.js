@@ -5,11 +5,20 @@ function NavBar() {
         <header>
             <h1>OnlyWines</h1>
             <nav>
-                <a href="#">Tintos</a>
-                <a href="#">Blancos</a>
-                <a href="#">Espumantes</a>
-                <a href="#">Contacto</a>
-                <a href="#"><CartWidget/></a>
+                <ul>
+                    <li>
+                        <a href="">Tintos</a>
+                    </li>
+                    <li>
+                        <a href="">Blancos</a>
+                    </li>
+                    <li>
+                        <a href="">Espumantes</a>
+                    </li>
+                    <li>
+                        <a href=""><CartWidget/></a>
+                    </li>
+                </ul>
             </nav>
         </header>
     )

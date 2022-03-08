@@ -1,15 +1,20 @@
-import ItemCount from "./ItemCount";
+// import ItemCount from "./ItemCount";
+import ItemList from "./ItemList";
 
-const MiOnAdd = () => {
+/*const MiOnAdd = () => {
   console.log("OnAdd");
-};
+};*/
+
 
 export  const ItemListContainer = (props) => {
   return (
     <main className="container">
-        <h2>Bienvenido a {props.greeting}</h2>
+        <div className="banner">
+        <h2 className="txtBanner">{props.greeting}</h2>
+        </div>        
         <br/>
-        <ItemCount stock={8} initial={1} onAdd={MiOnAdd} />
+        <ItemList/>
+        {/*<ItemCount stock={8} initial={1} onAdd={MiOnAdd} />*/}
     </main>
   );
 };

@@ -1,7 +1,15 @@
+$colorPrimario: rgb(143, 138, 138);
+$colorSecundario: #0B0706;
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 header {
@@ -14,7 +22,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    color: rgb(143, 138, 138);
+    color: $colorPrimario;
     
     h1 {
         margin: 1rem 1.5rem;
@@ -50,7 +58,7 @@ header {
             a {
                 list-style: none;
                 text-decoration: none;
-                color: #0B0706;
+                color: $colorSecundario;
                 
                 &:hover {
                     color: rgb(201, 197, 197);
@@ -61,17 +69,70 @@ header {
 }
 
 main {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.banner {
+    height: 88vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 88vh;
+    background-image: url(https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHdpbmVzfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
+    background-size: cover;
+}
+
+.txtBanner{
+    text-align: center;
+    font-size: 3.5rem;
+    color: $colorPrimario;
+
+}
+
+.contenedorProductos{
+    display: flex;
+    justify-content: center;
+}
+
+.cardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: auto;
+    height: auto;
+    margin: auto;
     font-family: 'Montserrat', sans-serif;
+
+    .imgCard{
+        padding: 2rem 0;
+        height: 250px;
+    }
+    .nameCard{
+        font-size: 1.4rem;
+        font-weight: 200;
+    }
+    .priceCard{
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+    .btnCard{
+        font-family: 'Montserrat', sans-serif;
+        color: $colorPrimario;
+        background-color:$colorSecundario;
+        text-decoration: none;
+        font-size: 1.4rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        box-shadow: 3px 5px 6px rgba(0, 0, 0, .5);
+    }
 }
 
 footer {
     height: 35vh;
-    background-color: #0B0706;
+    background-color: $colorSecundario;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

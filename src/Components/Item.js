@@ -1,9 +1,9 @@
-const Item = ({ producto }) => {
+const Item = (props) => {
     return (
         <div className="cardBody">
-            <img className="imgCard" src= {producto.img} alt=""/>
-            <p className="nameCard"> {producto.nombre}</p><br/>
-            <p className="priceCard"> $ {producto.precio}</p><br/>
+            <img className="imgCard" src= {props.product.img} alt=""/>
+            <p className="nameCard"> {props.product.nombre}</p><br/>
+            <p className="priceCard"> $ {props.product.precio}</p><br/>
             <button className="btnCard">Ver más</button>
         </div>
     );

@@ -1,16 +1,19 @@
 import NavBar from "./Components/NavBar";
-import ItemListContainer from "./Components/ItemListContainer";
+import Main from "./Components/Main";
 import Footer from "./Components/Footer";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter } from "react-router-dom";
 
 
 function App () {
     return (
-        <>
+        <BrowserRouter>
             <NavBar/>
-            <ItemListContainer greeting="OnlyWines" />
+            <Main greeting="OnlyWines" />
             <Footer/>
-        </>
-    );
-};
+        </BrowserRouter>
+    )
+}
 
-export default App;
+export default App

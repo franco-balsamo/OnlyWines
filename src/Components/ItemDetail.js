@@ -1,18 +1,22 @@
+import ItemCount from "./ItemCount";
+
 const ItemDetail = (props) => {
-    if(props.product.pid == 0)
-        return <></>
-    
     return (
-        <div className="contenedorProductos">
-            <div className="cardBody">
-                <img className="imgCard" src= {props.product.img} alt=""/>
-                <p className="nameCard"> {props.product.nombre}</p><br/>
-                <p>{props.product.descripcion}</p>
-                <p className="priceCard"> $ {props.product.precio}</p><br/>
-                <button className="btnCard">Comprar</button>
+        <section className="sectionProductDetailed">
+            <div className="containerProductDetailed">
+                <img className="productImg" src= {props.object.img} alt=""/>
+                <div className="productBody">
+                    <p className="productName"> {props.object.nombre}</p><br/>
+                    <p className="productDescription">{props.object.descripcion}</p>
+                    <p className="productPrice">  {"$" + props.object.precio}</p><br/>
+                    <div className="productStock">
+                        <p className="parrafoStock">En Stock</p>
+                        <ItemCount stock={props.stock} slug={props.slug}/>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        </section>
+    )
 }
 
 export default ItemDetail;

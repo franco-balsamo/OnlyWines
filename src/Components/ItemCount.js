@@ -1,34 +1,36 @@
 import react from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ItemCount = (props) => {
-    const [cantidad, setCantidad] = useState(props.initial);
-    
-    const handleIncrease = () => {
-        if (cantidad >= props.stock) {
-            setCantidad(cantidad);
+    const [count, setCount] = useState(0);
+    const restarCantidad = () => {
+        setCount(previousCount => previousCount - 1);
+    }
+    const sumarCantidad = () => {
+        setCount(previousCount => previousCount + 1);
+    }
+    const agregarProducto = () => {
+        if (props.stock < count) {
+            toast.error("no hay stock!");
         } else {
-            setCantidad(cantidad + 1);
+            agregar();
         }
-    };
-    
-    const handleSubtract = () => {
-        if (props.initial >= cantidad) {
-            setCantidad(cantidad);
-        } else {
-            setCantidad(cantidad - 1);
-        }
-    };
+    }
+    const agregar = () => {
+        toast.success("hay stock!");
+    }
     
     return (
-        <p>
-            <button onClick={handleSubtract}>-</button> Cantidad:
-            {cantidad} <button onClick={handleIncrease}>+</button>
-            <br/><br/>
-            <button onClick={props.onAdd}>Agregar al carrito</button>
-        </p>
-    );
-    
-};
+        <>
+            <div className="contador">
+                <button onClick={restarCantidad} disabled={count === 0}>-</button>
+                <p>{count}</p>
+                <button onClick={sumarCantidad} disabled={count === props.stock}>+</button>
+            </div>   
+            <button className="productBtn" onClick={agregarProducto} disabled={count === 0}>Comprar</button>
+        </>
+    )
+}
 
 export default ItemCount;

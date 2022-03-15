@@ -1,9 +1,10 @@
 import CartWidget from "./CartWidget";
+import { Link, NavLink} from "react-router-dom";
 
 function NavBar() {
     return (
         <header>
-            <h1>OnlyWines</h1>
+            <h1><Link to="/">OnlyWines</Link></h1>
             <nav>
                 <input type="checkbox" id="nav"></input>
                 <label htmlFor="nav">
@@ -12,16 +13,13 @@ function NavBar() {
                     <span></span>
                 </label>   
                 <ul className="menu">
-                    <li><a href="">Tintos</a></li>
-                    <li><a href="">Blancos</a></li>
-                    <li><a href="">Espumantes</a></li>
-                    <li><a href=""><CartWidget/></a></li>
+                    <li><NavLink to="/categoria/tinto">Tintos</NavLink></li>
+                    <li><NavLink to="/categoria/blanco">Blancos</NavLink></li>
+                    <li><NavLink to="/categoria/rosado">Rosados</NavLink></li>
+                    <li><NavLink to="carrito"><CartWidget/></NavLink></li>
                 </ul>
             </nav>
-            
-            
         </header>
     )
 }
-
 export default NavBar

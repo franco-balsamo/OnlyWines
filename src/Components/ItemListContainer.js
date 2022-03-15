@@ -1,47 +1,46 @@
-// import ItemCount from "./ItemCount";
+import productosJson from "../data/BaseDeDatos";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
-import productosJson from "../data/BaseDeDatos";
-import ItemDetailContainer from "./ItemDetailContainer"
+import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
-/*const MiOnAdd = () => {
-  console.log("OnAdd");
-};*/
 
-export  const ItemListContainer = (props) => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error,setError] = useState(false);
-  
-  const getProducts = () => {
-        return new Promise ((resp) => {
-            setTimeout(() => resp(productosJson.products),2000);
-        });
-    };
-  
-  useEffect(() => {
-        setIsLoading(true);
+const ItemListContainer = (props) => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error,setError] = useState(false);
+    const { categoria } = useParams();
+    
+    useEffect(() => {
+        setLoading(true);
+        const getProducts = () => {
+          return new Promise ((res, rej) => {
+              setTimeout(() => res(productosJson.products),2000);
+          });
+        }
+        
         getProducts()
-        .then (() => {setProducts(productosJson.products)})
-        .catch ((error) => setError (true))
-        .finally (() => setIsLoading(false));
-  }, []);
-  
-  return (
-    <main className="container">
-      <div className="banner w-100 vh-100">
-        <h2 className="txtBanner">{props.greeting}</h2>
-      </div>        
-      <br/>
-      <div>
-          {isLoading ? <h2>Cargando, por favor aguarde</h2> : null}
+        .then ((res) => {
+          if (categoria != undefined) {
+            const productsFiltered = productosJson.products.filter(product => product.categoria === categoria)
+            setProducts (productsFiltered)
+          } else {
+            setProducts(productosJson.products);
+          }
+        })
+        .catch ((rej) =>{
+          toast.error("Error al cargar los productos");
+          setError (true);
+        })
+        .finally (() => setLoading(false));
+    }, [categoria]);
+    
+    return (
+        <div>
+          {loading ? <h2>Cargando, por favor aguarde</h2> : null}
           {error ? <h2>Error, intente nuevamente</h2> : null}
           <ItemList products={products}/>
-      </div>
-      <ItemDetailContainer/>                  
-      {/*<ItemCount stock={8} initial={1} onAdd={MiOnAdd} />*/}
-    </main>
-  );
-};
-
+        </div>
+    );
+}
 export default ItemListContainer;

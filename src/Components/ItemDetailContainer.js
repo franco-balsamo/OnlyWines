@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ItemDetail from "./ItemDetail";
-import productosJson from "../data/BaseDeDatos";
+import { productosJson } from "../data/BaseDeDatos";
+
 
 const ItemDetailContainer = (props) => {
     const [object, setObject] = useState([]);
@@ -12,15 +13,13 @@ const ItemDetailContainer = (props) => {
     
     useEffect(() => {
         setLoading(true);
-        const getProducts = () => {
-            return new Promise ((res, rej) => {
-                setTimeout(() => res(productosJson.products),100);
-            });
-        }
+        const getProducts =  new Promise ((res, rej) => {
+                setTimeout(() =>{ res(productosJson);},100)
+            })
         
-        getProducts()
+        getProducts
         .then((res) => {
-            let result = productosJson.products.find(product => {
+            let result = productosJson.find(product => {
                 return product.slug === slug;
             })
             setObject(result);
@@ -34,9 +33,9 @@ const ItemDetailContainer = (props) => {
     
     return (
         <div>
-            {loading ? <h2>Cargando, por favor aguarde</h2> : null}
+            {loading ? <h2>Cargando, por favor aguarde</h2> : <ItemDetail object={object}/>}
             {error ? <h2>Error, intente nuevamente</h2> : null}
-            <ItemDetail object={object}/>
+            
         </div>
     );
 }

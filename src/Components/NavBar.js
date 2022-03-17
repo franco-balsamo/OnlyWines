@@ -1,11 +1,11 @@
 import CartWidget from "./CartWidget";
 import { Link, NavLink} from "react-router-dom";
 
-function NavBar() {
+function NavBar () {
     return (
         <header>
             <h1><Link to="/">OnlyWines</Link></h1>
-            <nav>
+            <nav >
                 <input type="checkbox" id="nav"></input>
                 <label htmlFor="nav">
                     <span></span>

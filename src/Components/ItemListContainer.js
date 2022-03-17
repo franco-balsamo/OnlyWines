@@ -1,9 +1,8 @@
-import productosJson from "../data/BaseDeDatos";
+import { productosJson } from "../data/BaseDeDatos";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
-
 
 const ItemListContainer = (props) => {
     const [products, setProducts] = useState([]);
@@ -15,17 +14,17 @@ const ItemListContainer = (props) => {
         setLoading(true);
         const getProducts = () => {
           return new Promise ((res, rej) => {
-              setTimeout(() => res(productosJson.products),2000);
+              setTimeout(() => res(productosJson),2000);
           });
         }
         
         getProducts()
         .then ((res) => {
-          if (categoria != undefined) {
-            const productsFiltered = productosJson.products.filter(product => product.categoria === categoria)
+          if (categoria !== undefined) {
+            const productsFiltered = productosJson.filter(product => product.categoria === categoria)
             setProducts (productsFiltered)
           } else {
-            setProducts(productosJson.products);
+            setProducts(productosJson);
           }
         })
         .catch ((rej) =>{
@@ -37,9 +36,9 @@ const ItemListContainer = (props) => {
     
     return (
         <div>
-          {loading ? <h2>Cargando, por favor aguarde</h2> : null}
+          {loading ? <h2>Cargando, por favor aguarde</h2> : <ItemList products={products}/>}
           {error ? <h2>Error, intente nuevamente</h2> : null}
-          <ItemList products={products}/>
+          
         </div>
     );
 }

@@ -12,6 +12,7 @@ function App () {
             <NavBar/>
             <Main greeting="OnlyWines" />
             <Footer/>
+            <ToastContainer/>
         </BrowserRouter>
     )
 }

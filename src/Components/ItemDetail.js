@@ -1,18 +1,27 @@
 import ItemCount from "./ItemCount";
-import { useState } from "react";
+import { cartContext } from "./CartContext";
+import { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom"
 
 const ItemDetail = (props) => {
-    const [countDesaparece, setCountDesaparece] = useState(false);
+    const [countDesaparece, setCountDesaparece] = useState(true);
     const [unidadesCompradas, setUnidadesCompradas] = useState(0);
+    
+    const useCartContext = useContext(cartContext);
+    const { addToCart } = useCartContext;
+    
     
     const onAdd = (activeCounter) => {
         if (activeCounter !== undefined) {
-            setCountDesaparece(true);
-            setUnidadesCompradas(activeCounter);
+                setUnidadesCompradas(activeCounter);
+                setCountDesaparece(false);
         }
         toast.success("Has agregado " + activeCounter + " artículos al carrito!");
+    }
+    
+    const handlePurchase = () => {
+        addToCart(props.object, unidadesCompradas);
     }
     
     return (
@@ -26,9 +35,8 @@ const ItemDetail = (props) => {
                     <p className="productDescription">{props.object.descripcion}</p>
                     <p className="productPrice">  {"$" + props.object.precio}</p><br/>
                     <p> Stock: {props.object.stock}</p>
-                    {countDesaparece ?
-                        <Link to="/cart/"><button>Terminar mi compra</button></Link> :
-                        <ItemCount initial={1} stock={props.object.stock} onAdd={onAdd} />}
+                    <ItemCount initial={1} stock={props.object.stock} onAdd={onAdd} />
+                    {countDesaparece ? null : <Link to="/cart/"><button className="Btn" onClick={handlePurchase}>Comprar</button></Link>}
                 </div>
             </div>
         

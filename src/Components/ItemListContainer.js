@@ -1,5 +1,6 @@
 import { productosJson } from "../data/BaseDeDatos";
 import ItemList from "./ItemList";
+import Spinner from "./Spinner";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
@@ -35,11 +36,11 @@ const ItemListContainer = (props) => {
     }, [categoria]);
     
     return (
-        <div>
-          {loading ? <h2>Cargando, por favor aguarde</h2> : <ItemList products={products}/>}
+        <>
+          {loading ? <Spinner /> : <ItemList products={products}/>}
           {error ? <h2>Error, intente nuevamente</h2> : null}
           
-        </div>
+        </>
     );
 }
 export default ItemListContainer;

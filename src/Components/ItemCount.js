@@ -20,7 +20,7 @@ const ItemCount = (props) => {
                 <p>{count}</p>
                 <button onClick={sumarCantidad} disabled={count === props.stock}>+</button>
             </div>   
-            <button id="addToCart" onClick={addToCart} disabled={count === 0}>Agregar al carrito</button>
+            <button className="Btn" onClick={addToCart} disabled={count === 0}>Agregar al carrito</button>
         </>
     )
 }

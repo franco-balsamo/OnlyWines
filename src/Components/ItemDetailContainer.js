@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ItemDetail from "./ItemDetail";
+import Spinner from "./Spinner";
 import { productosJson } from "../data/BaseDeDatos";
 
 
@@ -14,7 +15,7 @@ const ItemDetailContainer = (props) => {
     useEffect(() => {
         setLoading(true);
         const getProducts =  new Promise ((res, rej) => {
-                setTimeout(() =>{ res(productosJson);},100)
+                setTimeout(() =>{ res(productosJson);},500)
             })
         
         getProducts
@@ -32,11 +33,11 @@ const ItemDetailContainer = (props) => {
     }, []);
     
     return (
-        <div>
-            {loading ? <h2>Cargando, por favor aguarde</h2> : <ItemDetail object={object}/>}
+        <>
+            {loading ? <Spinner/> : <ItemDetail object={object} />}
             {error ? <h2>Error, intente nuevamente</h2> : null}
             
-        </div>
+        </>
     );
 }
 export default ItemDetailContainer;

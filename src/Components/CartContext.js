@@ -20,9 +20,13 @@ const CartProvider = ({ children }) => {
 
         if (isInCart(product)) {
             cartProduct = carrito.find(item => item.product === product)
-            cartProduct.count = cartProduct.count + count
-            carritoTemporal = [...carrito]
-        } else {
+            if (cartProduct.count + count <= product.stock) {
+                cartProduct.count += count;
+            } else {
+                toast.error("You can't add more than " + product.stock + " units of " + product.name + " to your cart!");
+                return;
+            }
+        } else {            
             carritoTemporal = [cartProduct, ...carrito]
         }
         setCarrito(carritoTemporal)
@@ -43,6 +47,7 @@ const CartProvider = ({ children }) => {
         setCarrito([]);
         setPrecioTotal(0);
         setProdsTotal(0);
+        toast.info("Producto eliminado")
         
     }
 

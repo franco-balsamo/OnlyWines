@@ -1,8 +1,18 @@
-import React from "react";
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import { Badge } from '@mui/material';
+import { cartContext } from "./CartContext";
+import { useContext } from 'react';
 
-function CartWidget ()  {
+const CartWidget = () =>  {
+    const useCartContext = useContext(cartContext);
+    const { prodsTotal } = useCartContext;
+
     return(
-        <box-icon type="store" name="store" color="white"></box-icon>
-    );
+        <>
+            <Badge id="cartBadge" badgeContent={prodsTotal} color="info">
+                <AddShoppingCartOutlinedIcon />
+            </Badge>
+        </>
+    )
 };
 export default CartWidget;

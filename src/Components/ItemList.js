@@ -5,7 +5,7 @@ const ItemList = (props) => {
         <section className="sectionProductos">
         <div className="contenedorProductos">
             {props.products.map((product) => {
-                return <Item key={product.id} nombre={product.nombre} precio={product.precio} stock={product.stock} img={product.img} slug={product.slug} />
+                return <Item key={product.id} nombre={product.nombre} precio={product.precio} stock={product.stock} imagen={product.imagen} slug={product.slug} />
             })}
         </div>
         </section>

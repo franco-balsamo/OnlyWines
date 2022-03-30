@@ -3,38 +3,37 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ItemDetail from "./ItemDetail";
 import Spinner from "./Spinner";
-import { productosJson } from "../data/BaseDeDatos";
+
+import { db } from "./Firebase";
+import { query, where, getDocs, collection } from "firebase/firestore";
 
 
 const ItemDetailContainer = (props) => {
-    const [object, setObject] = useState([]);
+    const [object, setObject] = useState({});
     const [loading, setLoading] = useState(true);
     const [error,setError] = useState(false);
     const { slug } = useParams();
     
     useEffect(() => {
-        setLoading(true);
-        const getProducts =  new Promise ((res, rej) => {
-                setTimeout(() =>{ res(productosJson);},500)
-            })
-        
-        getProducts
-        .then((res) => {
-            let result = productosJson.find(product => {
-                return product.slug === slug;
-            })
-            setObject(result);
+        const filteredDocuments = getDocs(query(collection(db, "productos"), where("slug", "==", slug)));
+
+        filteredDocuments.then((snapshot) => {
+            setObject(snapshot.docs.map(doc => ({
+                ...doc.data(),
+                id: doc.id
+            })));
         })
+
         .catch ((rej) =>{
             toast.error("Error al cargar los productos");
             setError (true);
         })
         .finally (() => setLoading(false));
-    }, []);
+    }, [slug]);
     
     return (
         <>
-            {loading ? <Spinner/> : <ItemDetail object={object} />}
+            {loading ? <Spinner/> : <>{object.map((product) => { return <ItemDetail key={product.id} object={product} /> })}</>}
             {error ? <h2>Error, intente nuevamente</h2> : null}
             
         </>

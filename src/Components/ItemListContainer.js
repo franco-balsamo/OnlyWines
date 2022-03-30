@@ -1,9 +1,11 @@
-import { productosJson } from "../data/BaseDeDatos";
+
 import ItemList from "./ItemList";
 import Spinner from "./Spinner";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+import { db } from "./Firebase";
+import { query, where, getDocs, collection } from "firebase/firestore";
 
 const ItemListContainer = (props) => {
     const [products, setProducts] = useState([]);
@@ -12,28 +14,43 @@ const ItemListContainer = (props) => {
     const { categoria } = useParams();
     
     useEffect(() => {
-        setLoading(true);
-        const getProducts = () => {
-          return new Promise ((res, rej) => {
-              setTimeout(() => res(productosJson),2000);
-          });
-        }
-        
-        getProducts()
-        .then ((res) => {
-          if (categoria !== undefined) {
-            const productsFiltered = productosJson.filter(product => product.categoria === categoria)
-            setProducts (productsFiltered)
-          } else {
-            setProducts(productosJson);
-          }
+      if (categoria !== undefined) {
+        const filteredDocuments = getDocs(query(collection(db, "productos"), where("categoria", "==", categoria)));
+        filteredDocuments.then((snapshot) => {
+            setProducts(snapshot.docs.map(doc => ({
+                ...doc.data(),
+                id: doc.id
+            })));
         })
-        .catch ((rej) =>{
+        
+        .catch ((rej) => {
           toast.error("Error al cargar los productos");
           setError (true);
         })
-        .finally (() => setLoading(false));
-    }, [categoria]);
+        
+        .finally (() => { 
+          setLoading(false);
+        })
+        
+    } else {
+        const documents = getDocs(collection(db, "productos"));
+        documents.then((snapshot) => {
+            setProducts(snapshot.docs.map(doc => ({
+                ...doc.data(),
+                id: doc.id
+            })));
+        })
+        
+        .catch ((rej) => {
+          toast.error("Error al cargar los productos");
+          setError (true);
+        })
+        
+        .finally (() => {
+          setLoading(false);
+        })
+    }
+  }, [categoria]);
     
     return (
         <>

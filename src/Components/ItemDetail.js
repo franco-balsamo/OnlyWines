@@ -28,7 +28,7 @@ const ItemDetail = (props) => {
         
             <div className="containerProductDetailed">
                 <div>
-                    <img className="productImg" src= {props.object.img} alt=""/>
+                    <img className="productImg" src= {props.object.imagen} alt=""/>
                 </div>
                 <div className="productBody">
                     <p className="productName"> {props.object.nombre}</p><br/>

@@ -1,6 +1,5 @@
-
 import ItemList from "./ItemList";
-import Spinner from "./Spinner";
+import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
@@ -54,7 +53,7 @@ const ItemListContainer = (props) => {
     
     return (
         <>
-          {loading ? <Spinner /> : <ItemList products={products}/>}
+          {loading ? <div className="loading">< CircularProgress color="inherit" /></div> : <ItemList products={products}/>}
           {error ? <h2>Error, intente nuevamente</h2> : null}
           
         </>

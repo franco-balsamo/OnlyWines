@@ -8,7 +8,7 @@ const Item = (props) => {
                     <p className="nameCard"> {props.nombre}</p><br/>
                     <p className="priceCard">  {"$" + props.precio}</p><br/>
                     <div>
-                        <Link to={/item/ + props.slug}><button className="btnCard" variant="contained">Más Detalles</button></Link>
+                        <Link to={/item/ + props.slug}><button className="Btn" variant="contained">Más Detalles</button></Link>
                     </div>
                 </div>
             

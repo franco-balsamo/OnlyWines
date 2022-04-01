@@ -1,7 +1,6 @@
 $colorPrimario: rgb(143, 138, 138);
 $colorSecundario: #0B0706;
 
-
 * {
     margin: 0;
     padding: 0;
@@ -257,18 +256,6 @@ main {
         font-size: 1.4rem;
         font-weight: 400;
     }
-    .btnCard{
-        font-family: 'Montserrat', sans-serif;
-        color: $colorPrimario;
-        background-color:$colorSecundario;
-        text-decoration: none;
-        font-size: 1.4rem;
-        padding: 0.5rem;
-        border-radius: 10px;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        box-shadow: 3px 5px 6px rgba(0, 0, 0, .5);
-    }
 }
 
 @media (max-width: 425px) {
@@ -357,18 +344,7 @@ main {
         }
     }
     
-    .productBtn{
-        font-family: 'Montserrat', sans-serif;
-        color: $colorPrimario;
-        background-color:$colorSecundario;
-        text-decoration: none;
-        font-size: 1.4rem;
-        padding: 0.5rem;
-        border-radius: 10px;
-        font-weight: 600;
-        margin: 1rem 0;
-        box-shadow: 3px 5px 6px rgba(0, 0, 0, .5);
-    }
+    
 };
 
 .contador {
@@ -419,26 +395,3 @@ footer {
 }
 
 // FIN FOOTER \\
-
-.loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: 10px solid #f3f3f3;
-    border-top: 10px solid #3498db;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-}
-

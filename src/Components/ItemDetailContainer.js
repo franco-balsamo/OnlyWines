@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ItemDetail from "./ItemDetail";
-import Spinner from "./Spinner";
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { db } from "./Firebase";
 import { query, where, getDocs, collection } from "firebase/firestore";
 
@@ -21,7 +20,7 @@ const ItemDetailContainer = (props) => {
             setObject(snapshot.docs.map(doc => ({
                 ...doc.data(),
                 id: doc.id
-            })));
+            }))[0]);
         })
 
         .catch ((rej) =>{
@@ -33,7 +32,7 @@ const ItemDetailContainer = (props) => {
     
     return (
         <>
-            {loading ? <Spinner/> : <>{object.map((product) => { return <ItemDetail key={product.id} object={product} /> })}</>}
+            {loading ? <div className="loading">< CircularProgress color="primary" /></div> : <ItemDetail key={object.id} object={object} />}
             {error ? <h2>Error, intente nuevamente</h2> : null}
             
         </>

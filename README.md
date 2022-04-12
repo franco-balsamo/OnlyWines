@@ -12,3 +12,5 @@ Este proyecto consiste en un ecommerce implementado con React junto con React Ro
 - validator (v13.7.0 +)
 
 ![imagen](gif.gif.gif)
+
+<div align="center"> <img src="/public/gif.gif.gif" width="400px"</img> </div>

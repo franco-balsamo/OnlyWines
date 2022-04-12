@@ -10,3 +10,5 @@ Este proyecto consiste en un ecommerce implementado con React junto con React Ro
 - node-sass (v7.0.1 +)
 - firebase (v9.6.10 +)
 - validator (v13.7.0 +)
+
+![](gif.gif.gif)

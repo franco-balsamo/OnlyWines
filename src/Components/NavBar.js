@@ -16,7 +16,7 @@ function NavBar () {
                     <li><NavLink to="/categoria/tinto">Tintos</NavLink></li>
                     <li><NavLink to="/categoria/blanco">Blancos</NavLink></li>
                     <li><NavLink to="/categoria/rosado">Rosados</NavLink></li>
-                    <li><NavLink to="carrito"><CartWidget/></NavLink></li>
+                    <li><NavLink to="/cart/"><CartWidget/></NavLink></li>
                 </ul>
             </nav>
         </header>

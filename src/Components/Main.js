@@ -5,9 +5,8 @@ import { Routes, Route} from "react-router-dom";
 
 const Main = (props) => {
     return (
-    <>
     <main className="container">  
-        <div className="banner w-100 vh-100">
+        <div className="banner">
             <h2 className="txtBanner">{props.greeting}</h2>
         </div>        
         <br/>
@@ -18,7 +17,6 @@ const Main = (props) => {
             <Route  path="/item/:slug" element={<ItemDetailContainer/>}/>
         </Routes>
     </main>
-    </>
     )
 }
 

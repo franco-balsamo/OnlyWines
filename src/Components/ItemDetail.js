@@ -9,25 +9,25 @@ const ItemDetail = (props) => {
     const useCartContext = useContext(cartContext);
     const { addToCart } = useCartContext;
     
-    const onAdd = (activeCounter) => {
-        if (activeCounter !== undefined) {
+    const onAdd = (activarContador) => {
+        if (activarContador !== undefined) {
             setOcultarBtn(false);
-            addToCart(props.object, activeCounter);
+            addToCart(props.object, activarContador);
         }
     }
     
     return (
         <div className="containerProductDetailed">
-            <div>
+            <div className="dropShadow">
                 <img className="productImg" src= {props.object.imagen} alt=""/>
             </div>
-            <div className="productBody">
+            <div className="productBody dropShadow">
                 <p className="productName"> {props.object.nombre}</p><br/>
                 <p className="productDescription">{props.object.descripcion}</p>
                 <p className="productPrice">  {"$" + props.object.precio}</p><br/>
-                <p> Stock: {props.object.stock}</p>
+                <p className="productStock"> Stock: {props.object.stock}</p>
                 <ItemCount initial={1} stock={props.object.stock} onAdd={onAdd} />
-                { ocultarBtn || <Link to="/cart/"><button className="Btn">Comprar</button></Link>}
+                { ocultarBtn || <Link to="/cart/" className="btnCount"><button className="Btn">Comprar</button></Link>}
             </div>
         </div>
     )

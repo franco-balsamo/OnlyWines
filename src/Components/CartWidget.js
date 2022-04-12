@@ -6,13 +6,13 @@ import { useContext } from 'react';
 const CartWidget = () =>  {
     const useCartContext = useContext(cartContext);
     const { prodsTotal } = useCartContext;
-
+    
     return(
         <>
-            <Badge id="cartBadge" badgeContent={prodsTotal} color="info">
+            <Badge badgeContent={prodsTotal} color="info">
                 <AddShoppingCartOutlinedIcon />
             </Badge>
         </>
     )
-};
-export default CartWidget;
+}
+export default CartWidget

@@ -16,8 +16,8 @@ const ItemDetailContainer = (props) => {
     useEffect(() => {
         const filteredDocuments = getDocs(query(collection(db, "productos"), where("slug", "==", slug)));
 
-        filteredDocuments.then((snapshot) => {
-            setObject(snapshot.docs.map(doc => ({
+        filteredDocuments.then((resp) => {
+            setObject(resp.docs.map(doc => ({
                 ...doc.data(),
                 id: doc.id
             }))[0]);
@@ -32,10 +32,9 @@ const ItemDetailContainer = (props) => {
     
     return (
         <>
-            {loading ? <div className="loading">< CircularProgress color="primary" /></div> : <ItemDetail key={object.id} object={object} />}
+            {loading ? < CircularProgress color="primary"/> : <ItemDetail key={object.id} object={object} />}
             {error ? <h2>Error, intente nuevamente</h2> : null}
-            
         </>
-    );
+    )
 }
-export default ItemDetailContainer;
+export default ItemDetailContainer

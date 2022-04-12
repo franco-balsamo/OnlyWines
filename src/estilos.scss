@@ -11,6 +11,14 @@ html {
     scroll-behavior: smooth;
 }
 
+main {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dropShadow {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 header {
     font-family: 'Montserrat', sans-serif;
     background-color: $colorSecundario;
@@ -178,10 +186,6 @@ input[type=checkbox] {
 }   
 // FIN RESPONSIVE HEADER \\
 
-main {
-    font-family: 'Montserrat', sans-serif;
-}
-
 // BANNER \\
 
 .banner {
@@ -298,72 +302,133 @@ main {
     justify-content: center;
     align-items: center;
     margin: 2rem ;
-};
+}
 
 .containerProductDetailed{
     margin: 3rem 0;
     display: flex;
     justify-content: center;
-};
+}
 
 .productImg {
     width: 300px;
     height: 450px;
-};
+}
 
 .productBody {
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
     margin: 0 4rem;
     
-    .productName{
-        font-size: 2rem;
-    }
-    
-    .productDescription{
-        line-height: 2rem;
-        font-size: 1rem;
-        text-align: center;
-        font-weight: 600;
-    }
-    
-    .productPrice {
-        font-weight: 600;
-        font-size: 1.5rem;
-    }
-    
-    .productStock{
-        font-size: 1.5rem;
-        
-        .parrafoStock {
-            display: flex;
-            justify-content: space-between;
+        .productName{
+            font-size: 2rem;
+            text-align: center;
+        }    
+        .productDescription{
+            line-height: 2rem;
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }    
+        .productPrice {
+            font-weight: 600;
+            font-size: 1.5rem;
+            text-align: center;
+        }    
+        .productStock{
+            font-size: 1rem;
+            text-align: center;
         }
-    }
-    
-    
-};
+}
 
-.contador {
+.containerCount {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 1rem;
+    
+        .parrafoCount {
+            margin: 0px 5rem;
+        }
+}
+
+.btnCount {
+    text-align: center;
 }
 
 .Btn {
     font-family: 'Montserrat', sans-serif;
-        color: $colorPrimario;
-        background-color:$colorSecundario;
-        text-decoration: none;
-        font-size: 1.4rem;
-        padding: 0.5rem;
-        border-radius: 10px;
-        font-weight: 600;
-        margin: 1rem 0;
-        box-shadow: 3px 5px 6px rgba(0, 0, 0, .5);
+    color: $colorPrimario;
+    background-color:$colorSecundario;
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    margin: 1rem 0;
+    box-shadow: 3px 5px 6px rgba(0, 0, 0, .5);
+}
+
+// CARRITO \\
+
+#seccionCarrito{
+    text-align: center;
+    margin: 2rem;
+}
+
+#containerProdsCarrito{
+    padding: 1rem;
+}
+
+.prodsCarrito{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 1rem 5rem;
+        
+        .imgProd {
+            height: 215px;
+        }        
+        .spanPrecio{
+            display: flex;
+            align-items: center;
+        }        
+        .h3Precio{
+            margin: 0 0.5rem;
+        }    
+}
+
+#containerForm{
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.h2Form {
+    margin: 2rem 0;
+}
+.itemForm{
+    margin: 0 0.5rem !important;
+}
+
+.textoForm{
+    margin: 2rem 0;
+}
+
+.h3Form{
+    margin: 0.5rem 0;
+}
+
+.containerBtnForm {
+    margin: 1rem 0;
+    
+    .btnForm{
+        margin: 1rem !important;
+    }
+}
+
+#cartContainer{
+    margin: 3rem 0;
 }
 
 // FOOTER \\

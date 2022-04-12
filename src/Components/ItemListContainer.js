@@ -15,8 +15,8 @@ const ItemListContainer = (props) => {
     useEffect(() => {
       if (categoria !== undefined) {
         const filteredDocuments = getDocs(query(collection(db, "productos"), where("categoria", "==", categoria)));
-        filteredDocuments.then((snapshot) => {
-            setProducts(snapshot.docs.map(doc => ({
+        filteredDocuments.then((resp) => {
+            setProducts(resp.docs.map(doc => ({
                 ...doc.data(),
                 id: doc.id
             })));
@@ -33,8 +33,8 @@ const ItemListContainer = (props) => {
         
     } else {
         const documents = getDocs(collection(db, "productos"));
-        documents.then((snapshot) => {
-            setProducts(snapshot.docs.map(doc => ({
+        documents.then((resp) => {
+            setProducts(resp.docs.map(doc => ({
                 ...doc.data(),
                 id: doc.id
             })));
@@ -49,14 +49,13 @@ const ItemListContainer = (props) => {
           setLoading(false);
         })
     }
-  }, [categoria]);
+  }, [categoria])
     
     return (
         <>
-          {loading ? <div className="loading">< CircularProgress color="inherit" /></div> : <ItemList products={products}/>}
+          {loading ? < CircularProgress color="inherit"/> : <ItemList products={products}/>}
           {error ? <h2>Error, intente nuevamente</h2> : null}
-          
         </>
-    );
+    )
 }
-export default ItemListContainer;
+export default ItemListContainer

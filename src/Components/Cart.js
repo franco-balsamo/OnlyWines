@@ -8,9 +8,9 @@ const Cart = () => {
     const { carrito } = useCartContext;
     
     return (
-        <div id="cartBackground">
+        <div id="seccionCarrito">
             {carrito.length === 0
-                ? <Link className="styleRemove flexCart" to="/"><button className="Btn">El carrito está vacío: haga click para volver a la tienda</button></Link>
+                ? <Link to="/"><button className="Btn">El carrito está vacío: haga click para volver a la tienda</button></Link>
                 : <CartContainer carrito={carrito} />
             }
         </div>

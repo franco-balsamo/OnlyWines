@@ -11,4 +11,4 @@ const ItemList = (props) => {
         </section>
     )
 }
-export default ItemList;
+export default ItemList

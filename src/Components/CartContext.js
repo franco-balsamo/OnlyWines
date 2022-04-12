@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
     }
     
     const cartCheckout = (orderId) => {
-        toast.success("Congratulations! Your purchase has been completed! The order id is: " + orderId, { autoClose: false, });
+        toast.success("¡Felicitaciones! ¡Su compra ha sido aprobada! Su numero de compra es: " + orderId, { autoClose: false, });
         clearStates();
     }
     
@@ -53,13 +53,13 @@ const CartProvider = ({ children }) => {
             cartProduct = carrito.find(item => item.product.nombre === product.nombre)
             if (cartProduct.count + count <= product.stock) {
                 cartProduct.count += count;
-                toast.success("You've added " + count + " items to the cart!");
+                toast.success("Has agregado " + count + " productos al carrito!");
             } else {
-                toast.error("You can't add more than " + product.stock + " units of " + product.nombre + " to your cart!");
+                toast.error("No puedes agregar más de " + product.stock + " unidades de " + product.nombre + " a tu carrito!");
                 return;
             }
         } else {  
-            toast.success("You've added " + count + " items to the cart!");          
+            toast.success("Has agregado " + count + " productos al carrito!");          
             carritoTemporal = [cartProduct, ...carrito]
             setCarrito(carritoTemporal)
         }
@@ -76,7 +76,7 @@ const CartProvider = ({ children }) => {
         if (isInCart(product)) {
             const carritoTemporal = carrito.filter(item => item.product !== product);
             setCarrito(carritoTemporal);
-            toast.info(product.nombre + " removed from your cart.");
+            toast.info(product.nombre + " eliminado de su carrito.");
             if (carritoTemporal.length === 0) {
                 clear();
             }

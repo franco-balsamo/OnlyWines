@@ -9,13 +9,13 @@ const CartContainer = (props) => {
     
     return (
         <div>
-            <div>
-                <h2>Cart Detail</h2>
+            <div className="dropShadow">
+                <h2>Detalles productos</h2>
                 {props.carrito.map(item => (
                     <CartItem key={item.product.id} item={item} deleteFromCart={deleteFromCart} />
                 ))}
             </div>
-            <div>
+            <div id="containerForm" className="dropShadow">
                 <CartForm carrito={props.carrito} />
             </div>
         </div>

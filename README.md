@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ef4afb14-b840-4897-8551-7436f4cd16d2/deploy-status)](https://app.netlify.com/sites/onlywines-franco-balsamo/deploys)
+
 ## Descripción del proyecto:
 Este es mi proyecto final para el curso de ReactJS en CoderHouse.
 Este proyecto consiste en un ecommerce implementado con React junto con React Router, React Hooks, Material UI Library como framework principal, Validator para validación de datos del formulario de compra, React Toastify para mensajes de formularios, alertas y errores y utilizando Firebase como base de datos.

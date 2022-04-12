@@ -11,6 +11,6 @@ Este proyecto consiste en un ecommerce implementado con React junto con React Ro
 - firebase (v9.6.10 +)
 - validator (v13.7.0 +)
 
-![imagen](gif.gif.gif)
 
-<div align="center"> <img src="/public/gif.gif.gif" width="400px"</img> </div>
+
+<div align="center"> <img src="/public/demo.gif" width="400px"</img> </div>
